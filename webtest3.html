@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Festival de graduación Poblenou</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #666;
+        }
+
+        form {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            width: 400px;
+            margin: 0 auto;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        #descripcion_normal,
+        #descripcion_vip {
+            font-style: italic;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Estilos para la sección de datos de pago */
+        #pago {
+            display: none;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            width: 400px;
+            margin: 20px auto;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #pago h2 {
+            color: #333;
+        }
+
+        #pago label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        #pago input[type="text"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #precio {
+            font-size: 18px;
+            color: #007bff;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <h1>Bienvenido al Festival de graduación de Poblenou</h1>
+    <p>Por favor, ingresa tus datos:</p>
+
+    <form id="registroForm">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br>
+
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos" required><br>
+
+        <label for="dni">DNI, NIE i Pasaporte:</label>
+        <input type="text" id="dni" name="dni" required><br>
+
+        <p>Selecciona tu tipo de entrada:</p>
+
+        <label for="entrada_normal">
+            <input type="radio" id="entrada_normal" name="tipo_entrada" value="normal" required> Entrada Normal
+        </label><br>
+
+        <label for="entrada_vip">
+            <input type="radio" id="entrada_vip" name="tipo_entrada" value="vip" required> Entrada VIP
+        </label><br>
+
+        <br><br>
+
+        <input type="submit" value="Registrarte">
+    </form>
+
+    <div id="pago">
+        <h2>Datos de Pago</h2>
+        <label for="tarjeta">Número de Tarjeta:</label>
+        <input type="text" id="tarjeta" name="tarjeta" required><br>
+
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" name="cvv" required><br>
+
+        <div id="precio"></div>
+    </div>
+
+    <script>
+        document.getElementById('registroForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Obtener el valor del tipo de entrada seleccionado
+            const tipoEntrada = document.querySelector('input[name="tipo_entrada"]:checked').value;
+
+            // Calcular el precio según el tipo de entrada
+            let precio = 0;
+            if (tipoEntrada === "normal") {
+                precio = 15; // Precio de la entrada normal
+            } else if (tipoEntrada === "vip") {
+                precio = 35; // Precio de la entrada VIP
+            }
+
+            // Mostrar el precio y los campos de pago
+            const precioDiv = document.getElementById('precio');
+            precioDiv.innerHTML = `Precio a pagar: $${precio}`;
+
+            const pagoDiv = document.getElementById('pago');
+            pagoDiv.style.display = 'block';
+        });
+    </script>
+<script>
+
+    // Agregar evento onclick al botón de Pagar
+    document.getElementById('pagarBoton').addEventListener('click', function () {
+              alert('Pago completado. ¡Disfruta del festival!');
+    });
+</script>
+
+</body>
+
+<script 
+type="text/javascript" id="hs-script-loader" async 
+defer src="//js.hs-scripts.com/143401309.js"></script> 
+
+</html>
